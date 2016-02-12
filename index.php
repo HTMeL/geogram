@@ -32,19 +32,23 @@ if (!empty($_GET['location'])){
   <head>
     <meta charset="utf-8"/>
     <title>geogram</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="script.js"></script>
   </head>
   <body>
-  <form action="/geogram.php" method="get">
+  <form action="" method="get">
     <input type="text" name="location"/>
     <button type="submit">Submit</button>
   </form>
-    <br/>
+  <br/>
+  <div id="images" data-url="<?php if(!empty($instagram_url)) echo $instagram_url ?>" id="pictures">
     <?php
     if(!empty($instagram_array)){
       foreach($instagram_array['data'] as $key=>$image){
-        echo '<img src="'.$image['images']['low_resolution']['url'].'" alt=""/><br/>';
+        echo '<img id="'. $image['id'] .'" src="'.$image['images']['low_resolution']['url'].'" alt=""/><br/>';
       }
     }
     ?>
+  </div>
   </body>
 </html>
